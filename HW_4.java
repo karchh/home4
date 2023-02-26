@@ -1,14 +1,8 @@
-// 1.Сохранить в файл строку и загрузить из файла строку с выводом в консоль используя классы FileWriter и FileReader.
-// 2.Загрузить из файла многострочный текст формата ФИО возраст и пол через пробелы. 
-//   Разбить по строкам и вывести в консоль в формате "Иванов И.И. 32 М"
-// 3.Загруженный и разбитый по строкам текст загрузить в подготовленные списки. 
-//   Фамилии, имена, отчества, возрас и пол в отдельных списках.
-// 4.Отсортировать по возрасту используя дополнительный список индексов.
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-// import java.util.Comparator;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class HW_4
@@ -22,9 +16,9 @@ public class HW_4
         ArrayList<Boolean> gender = new ArrayList<>();
         LinkedList<Integer> index = new LinkedList<>();
 
-
         String text = " ";
         FileReader reader = new FileReader("db.sql");
+        //список в формате "Фамилия Имя Отчество возраст пол" сразу в SQL записал
         while (reader. ready ()) {
             text += (char) reader. read();
         }
@@ -41,14 +35,14 @@ public class HW_4
             index.add(i);
         }
         
-        // new *
-        //index. sort(new Comparator<Integer>() {
-        //   new *
-        //   @Override
-        //   public int compare(Integer o1, Integer o2)  {
-        //       return o2-o1;
-        //   }        
-        //});
+        /*Collections.sort(age, new Comparator<Integer>() {
+        
+        @Override
+        public int compare(Integer o1, Integer o2)  {
+            return o2-o1;
+        }        
+        });*/
+        // какая то фигня с сортировкой, сортирует только возраст, а остальные параметры не сортирует
 
         for (int i = 0; i < index.size(); i++){
             System.out.printf(family.get(i));
@@ -57,14 +51,8 @@ public class HW_4
             System.out.printf(age.get(i).toString());
             System.out.printf((gender.get(i) ? " M" : " Ж"));
             System.out.println();
-        }
-
-            // System.out.println(family); 
-
-            // System.out.println(sb[0] + " " + sb[1].charAt(0) + "." + sb[2].charAt(0) + "." + " " + sb[3] + " " + sb[4]);
-        
-    }
-    
+        }   
+    }   
 }
 
     
